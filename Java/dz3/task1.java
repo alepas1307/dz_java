@@ -1,4 +1,3 @@
-//Объявить два списка список ArrayList, в каждый добавить по 20 случайных чисел
 package dz3;
 
 import java.io.BufferedReader;
