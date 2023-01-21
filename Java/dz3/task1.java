@@ -1,48 +1,29 @@
-package dz3;
+// Объявить два списка список ArrayList, в каждый добавить по 20 случайных чисел. 
+// Удалить из первого списка элементы отсутствующие во втором списке. 
+// Отсортировать первый список методом sort класса Collections. 
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.Random;
 
-public class task1
-{
+public class task1 {
+    public static void main(String[] args) {
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
 
-    public static void main(String[] args) throws Exception
-    {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        ArrayList<Integer> listAliquot3 = new ArrayList<Integer>();
-        ArrayList<Integer> listAliquot2 = new ArrayList<Integer>();
-        ArrayList<Integer> listOther = new ArrayList<Integer>();
-
-        for (int i = 0; i < 20; i++){
-            list.add(Integer.parseInt(reader.readLine()));
+        Random randomNumber = new Random();
+        for (int i = 0; i < 20; i++) {
+            list1.add(randomNumber.nextInt(100));
+            list2.add(randomNumber.nextInt(100));
         }
+    System.out.println("\nСписок 1: " + list1);
 
-        for (Integer i : list){
-            if (i % 3 == 0 && i % 2 == 0){
-                listAliquot2.add(i);
-                listAliquot3.add(i);
-            }
-            else if (i % 3 == 0)
-                listAliquot3.add(i);
-            else if (i % 2 == 0)
-                listAliquot2.add(i);
-            else
-                listOther.add(i);
-        }
+    Collections.sort(list1);
+    System.out.println("Список по возрастаию: " + list1 + "\n");
+    System.out.println("Список 2: " + list1 + "\n");
 
-        printList(listAliquot3);
-        printList(listAliquot2);
-        printList(listOther);
-    }
+    list1.removeIf(i -> !list2.contains(i));
+    System.out.println("Итоговый список: " + list1);
 
-    public static void printList(List<Integer> list)
-    {
-        for (Integer i : list){
-            System.out.println(i);
-        }
     }
 }
